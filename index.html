@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#08090d" />
+  <meta name="description"
+    content="Kayron Brigido — Full Stack Software Engineer building scalable web applications, cloud solutions and AI-powered products." />
+  <title>Kayron Brigido — Full Stack Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #08090d;
+      --surface: #101219;
+      --surface-2: #141722;
+      --text: #f2f4f8;
+      --muted: #9299aa;
+      --line: rgba(255, 255, 255, .09);
+      --purple: #9b7bff;
+      --cyan: #59d7e8;
+      --green: #9be6bd;
+      --mono: "DM Mono", monospace;
+      --sans: "Manrope", sans-serif;
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(ellipse at 78% 8%, rgba(107, 75, 210, .14), transparent 34rem),
+        radial-gradient(ellipse at 5% 42%, rgba(40, 151, 174, .07), transparent 30rem),
+        var(--bg);
+      font-family: var(--sans);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .language-switch {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .language-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #777;
+      transition: color 0.3s ease;
+    }
+
+    .language-label.active {
+      color: #a855f7;
+    }
+
+    .language-toggle {
+      width: 42px;
+      height: 22px;
+      border: 1px solid #444;
+      border-radius: 20px;
+      background: #222;
+      padding: 2px;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .toggle-circle {
+      display: block;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #a855f7;
+      box-shadow: 0 0 8px rgba(168, 85, 247, 0.6);
+      transition: transform 0.3s ease;
+    }
+
+    .language-toggle.pt .toggle-circle {
+      transform: translateX(20px);
+    }
+
+    .language-toggle:hover {
+      border-color: #a855f7;
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: -.06em;
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--purple);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .nav-links a:hover,
+    .text-link:hover {
+      color: var(--text);
+    }
+
+    .nav-cta {
+      border: 1px solid rgba(155, 123, 255, .5);
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 12px;
+      color: #d9ceff;
+      transition: .2s;
+    }
+
+    .nav-cta:hover {
+      background: rgba(155, 123, 255, .12);
+      border-color: var(--purple);
+    }
+
+    .hero {
+      min-height: 660px;
+      display: grid;
+      grid-template-columns: 1.50fr .88fr;
+      gap: 50px;
+      align-items: center;
+      padding: 88px 0 96px;
+    }
+
+    .eyebrow {
+      color: var(--cyan);
+      font: 11px var(--mono);
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .eyebrow:before {
+      content: "";
+      width: 25px;
+      height: 1px;
+      background: var(--cyan);
+    }
+
+    h1 {
+      font-size: clamp(48px, 6vw, 76px);
+      line-height: 1.06;
+      letter-spacing: -.075em;
+      margin: 22px 0;
+      font-weight: 800;
+    }
+
+    h1 .gradient {
+      background: linear-gradient(100deg, #fff 10%, #b9a5ff 56%, #62dce8 100%);
+      color: transparent;
+      background-clip: text;
+    }
+
+    .hero-copy {
+      max-width: 610px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .hero-copy strong {
+      color: #e8eaf1;
+      font-weight: 600;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      transition: .2s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(110deg, #a184ff, #6e91f6);
+      color: #090a10;
+      box-shadow: 0 8px 30px rgba(132, 105, 255, .18);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 34px rgba(132, 105, 255, .28);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--line);
+      color: #d9dce5;
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(255, 255, 255, .28);
+      background: rgba(255, 255, 255, .035);
+    }
+
+    .availability {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 34px;
+      color: var(--muted);
+      font: 11px var(--mono);
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #80dba8;
+      box-shadow: 0 0 12px #80dba8;
+    }
+
+    .visual {
+      position: relative;
+      min-height: 390px;
+      display: grid;
+      place-items: center;
+    }
+
+    .orbit {
+      width: min(390px, 100%);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      border: 1px solid rgba(155, 123, 255, .18);
+      background: radial-gradient(circle, rgba(128, 99, 219, .13), rgba(13, 15, 23, .3) 58%, transparent 59%);
+      position: relative;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 0 90px rgba(112, 86, 206, .09), inset 0 0 60px rgba(93, 80, 156, .08);
+    }
+
+    .orbit:before,
+    .orbit:after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(89, 215, 232, .13);
+      border-radius: 50%;
+    }
+
+    .orbit:before {
+      inset: 35px;
+    }
+
+    .orbit:after {
+      inset: 75px;
+      border-color: rgba(155, 123, 255, .18);
+    }
+
+    .core {
+      width: 138px;
+      height: 138px;
+      border-radius: 30px;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      transform: rotate(-8deg);
+      background: linear-gradient(145deg, rgba(155, 123, 255, .2), rgba(89, 215, 232, .08));
+      border: 1px solid rgba(193, 177, 255, .45);
+      box-shadow: 0 0 55px rgba(155, 123, 255, .22), inset 0 0 30px rgba(255, 255, 255, .04);
+      font: 42px var(--mono);
+      color: #e2d9ff;
+    }
+
+    .float-card {
+      position: absolute;
+      z-index: 3;
+      background: rgba(17, 20, 30, .88);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 12px 15px;
+      box-shadow: 0 15px 45px rgba(0, 0, 0, .25);
+      font: 10px var(--mono);
+      color: var(--muted);
+    }
+
+    .float-card b {
+      display: block;
+      color: #e7e9f0;
+      font: 600 12px var(--sans);
+      margin-top: 3px;
+    }
+
+    .fc-one {
+      top: 54px;
+      right: -4px;
+    }
+
+    .fc-two {
+      bottom: 55px;
+      left: -12px;
+    }
+
+    .fc-three {
+      bottom: 12px;
+      right: 20px;
+    }
+
+    .section {
+      padding: 90px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 34px;
+    }
+
+    .kicker {
+      color: var(--purple);
+      font: 11px var(--mono);
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 43px);
+      letter-spacing: -.06em;
+      line-height: 1.15;
+      margin: 10px 0 0;
+    }
+
+    .section-intro {
+      max-width: 420px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 24px;
+    }
+
+    .panel {
+      background: linear-gradient(145deg, rgba(20, 23, 34, .88), rgba(13, 15, 22, .9));
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 28px;
+    }
+
+    .about-text {
+      color: #aeb4c2;
+      font-size: 14px;
+      line-height: 1.95;
+    }
+
+    .about-text strong {
+      color: #f0f1f6;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .stat {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: rgba(255, 255, 255, .018);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 26px;
+      letter-spacing: -.06em;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 13px;
+    }
+
+    .skill-card {
+      border: 1px solid var(--line);
+      background: rgba(17, 20, 29, .72);
+      border-radius: 12px;
+      padding: 20px;
+      min-height: 150px;
+      transition: .2s;
+    }
+
+    .skill-card:hover,
+    .project:hover {
+      transform: translateY(-3px);
+      border-color: rgba(155, 123, 255, .42);
+    }
+
+    .skill-icon {
+      color: var(--cyan);
+      font: 20px var(--mono);
+      margin-bottom: 18px;
+    }
+
+    .skill-card h3 {
+      margin: 0 0 8px;
+      font-size: 14px;
+    }
+
+    .skill-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 25px;
+    }
+
+    .tag {
+      border: 1px solid rgba(255, 255, 255, .1);
+      background: rgba(255, 255, 255, .025);
+      color: #b9bfcc;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font: 10px var(--mono);
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .project {
+      border: 1px solid var(--line);
+      background: linear-gradient(145deg, #131621, #0e1017);
+      border-radius: 13px;
+      padding: 24px;
+      min-height: 230px;
+      transition: .2s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--cyan);
+      font: 10px var(--mono);
+    }
+
+    .project h3 {
+      margin: 22px 0 9px;
+      font-size: 19px;
+      letter-spacing: -.04em;
+    }
+
+    .project p {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .project .tech-stack {
+      margin-top: auto;
+      padding-top: 20px;
+    }
+
+    .experience {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 25px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .experience:last-child {
+      border-bottom: 0;
+    }
+
+    .exp-date {
+      color: var(--cyan);
+      font: 10px var(--mono);
+      padding-top: 5px;
+    }
+
+    .experience h3 {
+      margin: 0 0 5px;
+      font-size: 16px;
+    }
+
+    .experience p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+      max-width: 720px;
+    }
+
+    .contact {
+      text-align: center;
+      padding: 72px 30px;
+      border: 1px solid rgba(155, 123, 255, .22);
+      border-radius: 18px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(127, 95, 222, .16), transparent 65%), #10121a;
+    }
+
+    .contact h2 {
+      max-width: 650px;
+      margin: 12px auto;
+    }
+
+    .contact p {
+      max-width: 530px;
+      margin: 15px auto 25px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .contact .actions {
+      justify-content: center;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 25px 0;
+      color: #737b8c;
+      font: 10px var(--mono);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .socials {
+      display: flex;
+      gap: 20px;
+    }
+
+    .socials a:hover {
+      color: var(--text);
+    }
+
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 70px 0 60px;
+      }
+
+      .visual {
+        min-height: 330px;
+      }
+
+      .orbit {
+        width: 310px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .section {
+        padding: 68px 0;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-intro {
+        margin-top: 15px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .wrap {
+        width: min(100% - 32px, var(--max));
+      }
+
+      .nav {
+        height: 66px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-cta {
+        padding: 9px 12px;
+      }
+
+      h1 {
+        font-size: 48px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 65px 0 35px;
+      }
+
+      .hero-copy {
+        font-size: 14px;
+      }
+
+      .visual {
+        min-height: 300px;
+      }
+
+      .orbit {
+        width: 270px;
+      }
+
+      .core {
+        width: 112px;
+        height: 112px;
+        font-size: 34px;
+      }
+
+      .fc-one {
+        right: -2px;
+        top: 30px;
+      }
+
+      .fc-two {
+        left: -3px;
+        bottom: 35px;
+      }
+
+      .fc-three {
+        right: 0;
+        bottom: 0;
+      }
+
+      .skills-grid,
+      .projects {
+        grid-template-columns: 1fr;
+      }
+
+      .experience {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .stats {
+        gap: 8px;
+      }
+
+      .panel {
+        padding: 21px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+  <header class="wrap nav">
+    <a class="brand" href="#home">KB<span>.</span></a>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#about" data-i18n="nav.about">About</a>
+      <a href="#skills" data-i18n="nav.expertise">Expertise</a>
+      <a href="#projects" data-i18n="nav.projects">Projects</a>
+      <a href="#experience" data-i18n="nav.experience">Experience</a>
+    </nav>
+
+    <a class="nav-cta" href="#contact" data-i18n="nav.contact">Let's talk </a>
+
+    <div class="language-switch">
+      <span class="language-label">EN</span>
+
+      <button
+        class="language-toggle"
+        id="languageToggle"
+        type="button"
+        aria-label="Switch language"
+        aria-pressed="false"
+      >
+        <span class="toggle-circle"></span>
+      </button>
+
+      <span class="language-label">PT</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap hero" id="home">
+      <div>
+        <div class="eyebrow" data-i18n="hero.role">
+          Full Stack Software Engineer
+        </div>
+
+        <h1>
+          <div data-i18n="hero.slogan">
+            Building digital <br>
+            <span class="gradient">experiences</span><br>
+            that scale
+          </div>
+        </h1>
+
+        <p class="hero-copy" data-i18n="hero.description">
+          I'm Kayron Brigido, a software engineer with 5+ years of experience
+          building production-ready applications.
+        </p>
+
+        <div class="actions">
+          <a
+            class="btn btn-primary"
+            href="#projects"
+            data-i18n="hero.work"
+          >
+            Explore my work
+          </a>
+
+          <a
+            class="btn btn-secondary"
+            href="https://www.linkedin.com/in/kayronbrigido/"
+            data-i18n="hero.touch"
+          >
+            Get in touch
+          </a>
+        </div>
+
+        <div class="availability">
+          <span class="dot"></span>
+          <div data-i18n="hero.availability">
+            OPEN TO SELECTED FREELANCE PROJECTS
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="visual"
+        aria-label="Abstract developer technology illustration"
+      >
+        <div class="orbit">
+          <div class="core">&lt;/&gt;</div>
+
+          <div class="float-card fc-one">
+            BACKEND
+            <b>Scalable APIs</b>
+          </div>
+
+          <div class="float-card fc-two">
+            CLOUD & DEVOPS
+            <b>AWS · Architecture</b>
+          </div>
+
+          <div class="float-card fc-three">
+            FRONTEND
+            <b>Interfaces that work</b>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker" data-i18n="about.title">
+              01 / About Me
+            </div>
+
+            <h2 data-i18n="about.subtitle">
+              Engineering with purpose.
+            </h2>
+          </div>
+
+          <p class="section-intro" data-i18n="about.intro">
+            A practical mindset, an eye for product quality and a passion
+            for solving real-world problems through technology.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="panel">
+            <p class="about-text" data-i18n="about.description">
+              I’m a <strong>Full Stack Software Engineer</strong> focused on
+              designing, developing and improving digital products.
+            </p>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <strong>5+</strong>
+              <span data-i18n="stat.experience">
+                Years in software development
+              </span>
+            </div>
+
+            <div class="stat">
+              <strong>Full</strong>
+              <span data-i18n="stat.stack">
+                Stack product development
+              </span>
+            </div>
+
+            <div class="stat">
+              <strong>AWS</strong>
+              <span data-i18n="stat.cloud">
+                Cloud & infrastructure
+              </span>
+            </div>
+
+            <div class="stat">
+              <strong>AI</strong>
+              <span data-i18n="stat.ai">
+                Applied AI exploration
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker" data-i18n="skills.title">
+              02 / Expertise
+            </div>
+
+            <h2 data-i18n="skills.subtitle">
+              Tools I build with.
+            </h2>
+          </div>
+
+          <p class="section-intro" data-i18n="skills.intro">
+            The technologies I use to build maintainable applications,
+            resilient services and cloud-ready products.
+          </p>
+        </div>
+
+        <div class="skills-grid">
+          <article class="skill-card">
+            <div class="skill-icon">01 /</div>
+
+            <h3 data-i18n="skills.frontend.title">Frontend</h3>
+
+            <p data-i18n="skills.frontend.description">
+              Modern, responsive interfaces focused on usability,
+              performance and maintainability.
+            </p>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-icon">02 /</div>
+
+            <h3 data-i18n="skills.backend.title">Backend</h3>
+
+            <p data-i18n="skills.backend.description">
+              APIs, microservices, integrations and business logic
+              built for production.
+            </p>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-icon">03 /</div>
+
+            <h3 data-i18n="skills.cloud.title">Cloud & DevOps</h3>
+
+            <p data-i18n="skills.cloud.description">
+              Cloud infrastructure, deployment pipelines,
+              containers and AWS services.
+            </p>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-icon">04 /</div>
+
+            <h3 data-i18n="skills.ai.title">AI & Automation</h3>
+
+            <p data-i18n="skills.ai.description">
+              Exploring AI-powered workflows, LLM integrations
+              and intelligent applications.
+            </p>
+          </article>
+        </div>
+
+        <div class="tech-stack">
+          <span class="tag">TypeScript</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">React</span>
+          <span class="tag">Next.js</span>
+          <span class="tag">React Native</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">NestJS</span>
+          <span class="tag">Java</span>
+          <span class="tag">Python</span>
+          <span class="tag">AWS</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Kubernetes</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">DynamoDB</span>
+          <span class="tag">REST APIs</span>
+          <span class="tag">Microservices</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker" data-i18n="projects.title">
+              03 / Selected work
+            </div>
+
+            <h2 data-i18n="projects.subtitle">
+              Things I've worked on.
+            </h2>
+          </div>
+
+          <p class="section-intro" data-i18n="projects.intro">
+            A mix of professional experience and independent projects.
+          </p>
+        </div>
+
+        <div class="projects">
+          <article class="project">
+            <div class="project-top">
+              <span data-i18n="projects.banking.category">
+                PROFESSIONAL EXPERIENCE
+              </span>
+              <span></span>
+            </div>
+
+            <h3>White-label Banking Platform</h3>
+
+            <p data-i18n="projects.banking.description">
+              Contributed to a banking platform serving dozens of
+              financial institutions, working on API integrations,
+              microservices, microfrontends and production improvements.
+            </p>
+
+            <div class="tech-stack">
+              <span class="tag">Node.js</span>
+              <span class="tag">NestJS</span>
+              <span class="tag">React</span>
+              <span class="tag">React Native</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-top">
+              <span data-i18n="projects.service.category">
+                INDEPENDENT PROJECT
+              </span>
+              <span></span>
+            </div>
+
+            <h3>Service Desk</h3>
+
+            <p data-i18n="projects.service.description">
+              A help desk SaaS concept focused on organizing support
+              operations, service requests and customer interactions.
+            </p>
+
+            <div class="tech-stack">
+              <span class="tag">TypeScript</span>
+              <span class="tag">NestJS</span>
+              <span class="tag">React</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-top">
+              <span data-i18n="projects.profilator.category">
+                INDEPENDENT PROJECT
+              </span>
+              <span></span>
+            </div>
+
+            <h3>Profilator</h3>
+
+            <p data-i18n="projects.profilator.description">
+              A platform exploring risk analysis and validation workflows,
+              with an API-oriented architecture and a dedicated validation environment.
+            </p>
+
+            <div class="tech-stack">
+              <span class="tag">Python</span>
+              <span class="tag">FastAPI</span>
+              <span class="tag">PostgreSQL</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-top">
+              <span data-i18n="projects.marketplace.category">
+                INDEPENDENT PROJECT · IN DEVELOPMENT
+              </span>
+              <span></span>
+            </div>
+
+            <h3>Multi-vendor Marketplace</h3>
+
+            <p data-i18n="projects.marketplace.description">
+              A marketplace platform concept connecting stores and customers,
+              with plans for store management, orders and commission workflows.
+            </p>
+
+            <div class="tech-stack">
+              <span class="tag">NestJS</span>
+              <span class="tag">React</span>
+              <span class="tag">AWS</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker" data-i18n="experience.title">
+              04 / Experience
+            </div>
+
+            <h2 data-i18n="experience.subtitle">
+              Where I add value.
+            </h2>
+          </div>
+
+          <p class="section-intro" data-i18n="experience.intro">
+            Working across product development, architecture and delivery
+            — with a focus on practical outcomes.
+          </p>
+        </div>
+
+        <div class="panel">
+          <div class="experience">
+            <div class="exp-date" data-i18n="experience.banking.category">
+              PROFESSIONAL EXPERIENCE
+            </div>
+
+            <div>
+              <h3 data-i18n="experience.banking.title">
+                Full Stack Software Engineer · Banking Technology
+              </h3>
+
+              <p data-i18n="experience.banking.description">
+                Contributing to a white-label banking ecosystem used by
+                dozens of banks. Developing integrations, improving existing
+                services, building NestJS microservices and React microfrontends,
+                and supporting web and mobile experiences.
+              </p>
+            </div>
+          </div>
+
+          <div class="experience">
+            <div class="exp-date" data-i18n="experience.learning.category">
+              CONTINUOUS LEARNING
+            </div>
+
+            <div>
+              <h3 data-i18n="experience.learning.title">
+                Cloud, Architecture & AI
+              </h3>
+
+              <p data-i18n="experience.learning.description">
+                Expanding expertise in AWS architecture, software design,
+                distributed systems and applied AI. AWS Certified Cloud Practitioner.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="contact" id="contact">
+          <div class="kicker" data-i18n="contact.kicker">
+            05 / Have a project in mind?
+          </div>
+
+          <h2 data-i18n="contact.title">
+            Let's build something <span class="gradient">meaningful.</span>
+          </h2>
+
+          <p data-i18n="contact.description">
+            I'm open to selected freelance opportunities, collaborations
+            and conversations about interesting engineering challenges.
+          </p>
+
+          <div class="actions">
+            <a
+              class="btn btn-primary"
+              href="mailto:YOUR_EMAIL@example.com"
+              data-i18n="contact.email"
+            >
+              Start a conversation 
+            </a>
+
+            <a
+              class="btn btn-secondary"
+              href="https://www.linkedin.com/in/kayronbrigido/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              LinkedIn 
+            </a>
+
+            <a
+              class="btn btn-secondary"
+              href="https://www.upwork.com/freelancers/~01e1f32a123446e55d"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Upwork 
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>
+        © <span id="year"></span> Kayron Brigido.
+        <span data-i18n="footer.text">Built with purpose.</span>
+      </span>
+
+      <div class="socials">
+        <a
+          href="https://www.linkedin.com/in/kayronbrigido/"
+          target="_blank"
+          rel="noreferrer"
+        >LinkedIn</a>
+
+        <a
+          href="https://www.upwork.com/freelancers/~01e1f32a123446e55d"
+          target="_blank"
+          rel="noreferrer"
+        >Upwork</a>
+
+        <a
+          href="https://github.com/kayronbrigido"
+          target="_blank"
+          rel="noreferrer"
+        >GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
+  <script>
+    const translations = {
+      en: {
+        "nav.about": "About",
+        "nav.expertise": "Expertise",
+        "nav.projects": "Projects",
+        "nav.experience": "Experience",
+        "nav.contact": "Let's talk ",
+
+        "hero.role": "Full Stack Software Engineer",
+        "hero.slogan": `Building digital <br><span class="gradient">experiences</span><br> that scale`,
+        "hero.description": `
+          I'm <strong>Kayron Brigido</strong>, a software engineer with 5+ years
+          of experience building production-ready applications. I turn complex
+          problems into <strong>reliable, scalable and well-crafted software</strong>
+          — from modern web interfaces to backend systems and cloud infrastructure.
+        `,
+        "hero.work": "Explore my work",
+        "hero.touch": "Get in touch",
+        "hero.availability": "OPEN TO SELECTED FREELANCE PROJECTS",
+
+        "about.title": "01 / About Me",
+        "about.subtitle": "Engineering with purpose.",
+        "about.intro": `
+          A practical mindset, an eye for product quality and a passion
+          for solving real-world problems through technology.
+        `,
+        "about.description": `
+          <p class="about-text">
+            I’m a <strong>Full Stack Software Engineer</strong> focused on designing,
+            developing and improving digital products. My day-to-day work is centered
+            around the TypeScript ecosystem, while I also work with Java and Python.
+            <br><br>
+            I have experience contributing to a <strong>white-label banking platform
+            serving dozens of financial institutions</strong>, building integrations,
+            microservices and microfrontends in environments where reliability and
+            maintainability matter.
+            <br><br>
+            I enjoy working across the stack — understanding the business problem,
+            shaping the architecture and delivering the solution.
+          </p>
+        `,
+
+        "stat.experience": "Years in software development",
+        "stat.stack": "Full Stack product development",
+        "stat.cloud": "Cloud & infrastructure",
+        "stat.ai": "Applied AI exploration",
+
+        "skills.title": "02 / Expertise",
+        "skills.subtitle": "Tools I build with.",
+        "skills.intro": `
+          The technologies I use to build maintainable applications,
+          resilient services and cloud-ready products.
+        `,
+        "skills.frontend.title": "Frontend",
+        "skills.frontend.description": `
+          Modern, responsive interfaces focused on usability,
+          performance and maintainability.
+        `,
+        "skills.backend.title": "Backend",
+        "skills.backend.description": `
+          APIs, microservices, integrations and business logic
+          built for production.
+        `,
+        "skills.cloud.title": "Cloud & DevOps",
+        "skills.cloud.description": `
+          Cloud infrastructure, deployment pipelines,
+          containers and AWS services.
+        `,
+        "skills.ai.title": "AI & Automation",
+        "skills.ai.description": `
+          Exploring AI-powered workflows, LLM integrations
+          and intelligent applications.
+        `,
+
+        "projects.title": "03 / Selected work",
+        "projects.subtitle": "Things I've worked on.",
+        "projects.intro": `
+          A mix of professional experience and independent projects.
+          More details and repositories can be added as each project is made public.
+        `,
+        "projects.banking.category": "PROFESSIONAL EXPERIENCE",
+        "projects.banking.description": `
+          Contributed to a banking platform serving dozens of financial institutions,
+          working on API integrations, microservices, microfrontends
+          and production improvements.
+        `,
+        "projects.service.category": "INDEPENDENT PROJECT",
+        "projects.service.description": `
+          A help desk SaaS concept focused on organizing support operations,
+          service requests and customer interactions.
+        `,
+        "projects.profilator.category": "INDEPENDENT PROJECT",
+        "projects.profilator.description": `
+          A platform exploring risk analysis and validation workflows,
+          with an API-oriented architecture and a dedicated validation environment.
+        `,
+        "projects.marketplace.category": "INDEPENDENT PROJECT · IN DEVELOPMENT",
+        "projects.marketplace.description": `
+          A marketplace platform concept connecting stores and customers,
+          with plans for store management, orders and commission workflows.
+        `,
+
+        "experience.title": "04 / Experience",
+        "experience.subtitle": "Where I add value.",
+        "experience.intro": `
+          Working across product development, architecture and delivery
+          — with a focus on practical outcomes.
+        `,
+        "experience.banking.category": "PROFESSIONAL EXPERIENCE",
+        "experience.banking.title": "Full Stack Software Engineer · Banking Technology",
+        "experience.banking.description": `
+          Contributing to a white-label banking ecosystem used by dozens of banks.
+          Developing integrations, improving existing services, building NestJS
+          microservices and React microfrontends, and supporting web and mobile experiences.
+        `,
+        "experience.learning.category": "CONTINUOUS LEARNING",
+        "experience.learning.title": "Cloud, Architecture & AI",
+        "experience.learning.description": `
+          Expanding expertise in AWS architecture, software design,
+          distributed systems and applied AI. AWS Certified Cloud Practitioner.
+        `,
+
+        "contact.kicker": "05 / Have a project in mind?",
+        "contact.title": `
+          Let's build something <span class="gradient">meaningful.</span>
+        `,
+        "contact.description": `
+          I'm open to selected freelance opportunities, collaborations
+          and conversations about interesting engineering challenges.
+        `,
+        "contact.email": "Start a conversation ",
+
+        "footer.text": "Built with purpose."
+      },
+
+      pt: {
+        "nav.about": "Sobre",
+        "nav.expertise": "Especialidades",
+        "nav.projects": "Projetos",
+        "nav.experience": "Experiência",
+        "nav.contact": "Vamos conversar",
+
+        "hero.role": "Engenheiro de Software Full Stack",
+        "hero.slogan": `Criando <br><span class="gradient">experiências digitais</span><br> que vão além`,
+        "hero.description": `
+          Sou <strong>Kayron Brigido</strong>, engenheiro de software com mais de
+          5 anos de experiência no desenvolvimento de aplicações para produção.
+          Transformo problemas complexos em <strong>soluções confiáveis, escaláveis
+          e bem construídas</strong> — desde interfaces web modernas até sistemas
+          backend e infraestrutura em nuvem.
+        `,
+        "hero.work": "Conheça meus projetos",
+        "hero.touch": "Entre em contato",
+        "hero.availability": "DISPONÍVEL PARA PROJETOS FREELANCE SELECIONADOS",
+
+        "about.title": "01 / Sobre mim",
+        "about.subtitle": "Engenharia com propósito.",
+        "about.intro": `
+          Uma mentalidade prática, atenção à qualidade dos produtos
+          e paixão por resolver problemas reais por meio da tecnologia.
+        `,
+        "about.description": `
+          <p class="about-text">
+            Sou <strong>Engenheiro de Software Full Stack</strong>, focado em projetar,
+            desenvolver e aprimorar produtos digitais. Meu trabalho diário é centrado
+            no ecossistema TypeScript, mas também trabalho com Java e Python.
+            <br><br>
+            Tenho experiência contribuindo para uma <strong>plataforma bancária
+            white-label que atende dezenas de instituições financeiras</strong>,
+            desenvolvendo integrações, microsserviços e microfrontends em ambientes
+            onde confiabilidade e facilidade de manutenção são fundamentais.
+            <br><br>
+            Gosto de trabalhar em todas as camadas da aplicação — entendendo o problema
+            de negócio, definindo a arquitetura e entregando a solução.
+          </p>
+        `,
+
+        "stat.experience": "Anos de desenvolvimento de software",
+        "stat.stack": "Desenvolvimento Full Stack",
+        "stat.cloud": "Nuvem e infraestrutura",
+        "stat.ai": "Exploração de IA aplicada",
+
+        "skills.title": "02 / Especialidades",
+        "skills.subtitle": "Tecnologias com as quais trabalho.",
+        "skills.intro": `
+          As tecnologias que utilizo para construir aplicações de fácil manutenção,
+          serviços resilientes e produtos preparados para a nuvem.
+        `,
+        "skills.frontend.title": "Frontend",
+        "skills.frontend.description": `
+          Interfaces modernas e responsivas, com foco em usabilidade,
+          desempenho e facilidade de manutenção.
+        `,
+        "skills.backend.title": "Backend",
+        "skills.backend.description": `
+          APIs, microsserviços, integrações e regras de negócio
+          desenvolvidos para ambientes de produção.
+        `,
+        "skills.cloud.title": "Cloud & DevOps",
+        "skills.cloud.description": `
+          Infraestrutura em nuvem, pipelines de implantação,
+          contêineres e serviços AWS.
+        `,
+        "skills.ai.title": "IA e Automação",
+        "skills.ai.description": `
+          Explorando fluxos de trabalho com IA, integrações com LLMs
+          e aplicações inteligentes.
+        `,
+
+        "projects.title": "03 / Projetos selecionados",
+        "projects.subtitle": "Projetos nos quais trabalhei.",
+        "projects.intro": `
+          Uma combinação de experiência profissional e projetos independentes.
+          Mais detalhes e repositórios poderão ser adicionados conforme os projetos
+          se tornem públicos.
+        `,
+        "projects.banking.category": "EXPERIÊNCIA PROFISSIONAL",
+        "projects.banking.description": `
+          Contribuição para uma plataforma bancária que atende dezenas de instituições
+          financeiras, atuando em integrações de APIs, microsserviços, microfrontends
+          e melhorias em ambiente de produção.
+        `,
+        "projects.service.category": "PROJETO INDEPENDENTE",
+        "projects.service.description": `
+          Conceito de uma plataforma SaaS de Service Desk, voltada à organização
+          de operações de suporte, solicitações de serviço e interações com clientes.
+        `,
+        "projects.profilator.category": "PROJETO INDEPENDENTE",
+        "projects.profilator.description": `
+          Plataforma voltada à exploração de análise de riscos e fluxos de validação,
+          com arquitetura orientada a APIs e um ambiente dedicado a testes e validações.
+        `,
+        "projects.marketplace.category": "PROJETO INDEPENDENTE · EM DESENVOLVIMENTO",
+        "projects.marketplace.description": `
+          Conceito de marketplace que conecta lojas e consumidores,
+          com funcionalidades planejadas para gestão de lojas, pedidos
+          e processamento de comissões.
+        `,
+
+        "experience.title": "04 / Experiência",
+        "experience.subtitle": "Onde gero valor.",
+        "experience.intro": `
+          Atuação no desenvolvimento de produtos, arquitetura e entrega de soluções,
+          sempre com foco em resultados práticos.
+        `,
+        "experience.banking.category": "EXPERIÊNCIA PROFISSIONAL",
+        "experience.banking.title": "Engenheiro de Software Full Stack · Tecnologia Bancária",
+        "experience.banking.description": `
+          Contribuo para um ecossistema bancário white-label utilizado por dezenas
+          de bancos. Desenvolvo integrações, aprimoro serviços existentes, construo
+          microsserviços com NestJS e microfrontends com React, além de atuar
+          em experiências web e mobile.
+        `,
+        "experience.learning.category": "APRENDIZADO CONTÍNUO",
+        "experience.learning.title": "Cloud, Arquitetura e IA",
+        "experience.learning.description": `
+          Aprofundando conhecimentos em arquitetura AWS, design de software,
+          sistemas distribuídos e inteligência artificial aplicada.
+          AWS Certified Cloud Practitioner.
+        `,
+
+        "contact.kicker": "05 / Tem um projeto em mente?",
+        "contact.title": `
+          Vamos construir algo <span class="gradient">significativo.</span>
+        `,
+        "contact.description": `
+          Estou aberto a oportunidades freelance selecionadas, colaborações
+          e conversas sobre desafios interessantes de engenharia de software.
+        `,
+        "contact.email": "Vamos conversar ",
+
+        "footer.text": "Construído com propósito."
+      }
+    };
+  </script>
+
+  <script>
+    const languageToggle = document.getElementById("languageToggle");
+
+    function setLanguage(language) {
+      const selectedLanguage = translations[language];
+
+      if (!selectedLanguage) return;
+
+      document.documentElement.lang =
+        language === "pt" ? "pt-BR" : "en";
+
+      document.querySelectorAll("[data-i18n]").forEach(element => {
+        const key = element.dataset.i18n;
+        const translation = selectedLanguage[key];
+
+        if (translation !== undefined) {
+          element.innerHTML = translation;
+        }
+      });
+
+      languageToggle.classList.toggle("pt", language === "pt");
+
+      languageToggle.setAttribute(
+        "aria-pressed",
+        language === "pt" ? "true" : "false"
+      );
+
+      languageToggle.setAttribute(
+        "aria-label",
+        language === "pt" ? "Mudar idioma para inglês" : "Switch language to Portuguese"
+      );
+
+      document.querySelectorAll(".language-label").forEach(label => {
+        label.classList.toggle(
+          "active",
+          label.textContent.trim() === (language === "pt" ? "PT" : "EN")
+        );
+      });
+
+      localStorage.setItem("preferred-language", language);
+    }
+
+    languageToggle.addEventListener("click", () => {
+      const currentLanguage =
+        localStorage.getItem("preferred-language") || "en";
+
+      setLanguage(currentLanguage === "en" ? "pt" : "en");
+    });
+
+    setLanguage(localStorage.getItem("preferred-language") || "en");
+  </script>
+</body>
+
+
+</html>
